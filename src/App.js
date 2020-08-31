@@ -11,10 +11,30 @@ const toDoListData = [
   },
 
   {
-    name: "Eat Breakfast",
+    name: "Eat breakfast",
     id: 112,
     done: false
-  }
+  },
+  {
+    name: "Attend lecture",
+    id: 113,
+    done: false
+  },
+  {
+    name: "Do project",
+    id: 113,
+    done: false
+  },
+  {
+    name: "Eat Lunch",
+    id: 113,
+    done: false
+  },
+  {
+    name: "Take out the trash",
+    id: 113,
+    done: false
+  },
 ]
 
 class App extends React.Component {
@@ -29,22 +49,54 @@ class App extends React.Component {
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   addToDo = (name) => {
-      console.log(name)
+    const tempList = {
+      name : name,
+      id : Date.now(),
+      done: false
+    }
+
+    this.setState({
+      list: [...this.state.list, tempList]
+    })
   }
 
   clearCompleted = ()=>{
-
+    this.setState({
+      list : this.state.list.filter((item)=>{
+        if(item.done === false)
+        return item
+      })
+    })
+     
   }
 
+  toggleDone = (id)=> {
+    this.setState({
+      list :    this.state.list.map(item=>{
+        if(id === item.id)
+        return {...item, done: !item.done}
+        else
+        return item
+    })
+    })
+    
+  }
   
 
   render() {
     return (
       
-      <>
-        <TodoForm list={this.state.list} addToDo={this.addToDo} clearCompleted={this.clearCompleted} />
-        <TodoList list={this.state.list} />
-      </>
+      <div className="App">
+        <TodoForm 
+           list={this.state.list} 
+           addToDo={this.addToDo} 
+           clearCompleted={this.clearCompleted} 
+           />
+        <TodoList 
+           list={this.state.list} 
+           toggleDone = {this.toggleDone}  
+           />
+      </div>
     );
   }
 }

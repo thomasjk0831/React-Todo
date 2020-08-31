@@ -7,8 +7,8 @@ const ToDoList = (props) => {
     return(
         <>
         {
-            props.list.map((l)=>{
-                return <Todo listItem = {l.name} />
+            props.list.map((item)=>{
+                return <Todo listItem = {item} toggleDone ={props.toggleDone}/>
             })
         }
               </>

@@ -18,6 +18,9 @@ class TodoForm extends React.Component {
         handleSubmit = (e) => {
             e.preventDefault()
             this.props.addToDo(this.state.name)
+            this.setState({
+                name: ""
+            })
         }
 
     render(){
@@ -34,7 +37,7 @@ class TodoForm extends React.Component {
                 </label>
                 <button>Add to List</button>
             </form>
-            <button>Clear Completed</button>
+            <button onClick={this.props.clearCompleted}>Clear Completed</button>
             </>
         )
     }
