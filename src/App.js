@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
+import './App.css'
 
 const toDoListData = [
   {
@@ -20,21 +21,7 @@ const toDoListData = [
     id: 113,
     done: false
   },
-  {
-    name: "Do project",
-    id: 113,
-    done: false
-  },
-  {
-    name: "Eat Lunch",
-    id: 113,
-    done: false
-  },
-  {
-    name: "Take out the trash",
-    id: 113,
-    done: false
-  },
+
 ]
 
 class App extends React.Component {
